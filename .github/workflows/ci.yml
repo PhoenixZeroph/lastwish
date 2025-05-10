@@ -1,0 +1,20 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:15-alpine
+        env:
+          POSTGRES_DB: lastwish
+          POSTGRES_USER: lastwish
+          POSTGRES_PASSWORD: secret
+        ports: ["5432:5432"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
+        with: { version: 8 }
+      - run: pnpm install
+      - run: pnpm build
+      - run: pnpm lint
