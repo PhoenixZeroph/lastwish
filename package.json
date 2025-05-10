@@ -1,0 +1,16 @@
+
+### `package.json`
+```jsonc
+{
+  "name": "lastwish",
+  "private": true,
+  "workspaces": ["apps/*"],
+  "scripts": {
+    "dev": "turbo run dev --parallel",
+    "build": "turbo run build",
+    "lint": "turbo run lint"
+  },
+  "devDependencies": {
+    "turbo": "^1.14.0"
+  }
+}
